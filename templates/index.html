@@ -1,0 +1,309 @@
+{%extends 'theme.html' %}
+
+{%load static%}
+
+{%block title%}Dashboard | MilkBrand{%endblock%}
+{%block content%}
+<div class="page-content">
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <div class="col">
+
+                <div class="h-100">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="row">
+
+
+                                <div class="col-xl-12 col-md-6">
+                                    <!-- card -->
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title bg-info-subtle rounded fs-3">
+                                                        <i class="bx bx-shopping-bag text-info"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="text-end flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                                        Orders</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value"
+                                                            data-target="100">0</span></h4>
+                                                    <div class="d-flex align-items-center justify-content-end gap-2">
+                                                        <h5 class="text-danger fs-12 mb-0">
+                                                            <i class="ri-arrow-right-down-line fs-13 align-middle"></i>
+                                                            -2.74 %
+                                                        </h5>
+                                                        <p class="text-muted mb-0">than last week</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-info opacity-25 left fs-18">
+                                            <i class="bi bi-handbag"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-info opacity-25 left fs-18">
+                                            <i class="bi bi-shop"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-info opacity-25 left fs-18">
+                                            <i class="bi bi-bag-check"></i>
+                                        </div>
+                                    </div><!-- end card -->
+                                </div><!-- end col -->
+
+                                <div class="col-xl-12 col-md-6">
+                                    <!-- card -->
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                                        Customers</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value"
+                                                            data-target="{{total_customers}}">0</span></h4>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <h5 class="text-success fs-12 mb-0">
+                                                            <i class="ri-arrow-right-up-line fs-13 align-middle"></i>
+                                                            +29.08 %
+                                                        </h5>
+                                                        <p class="text-muted mb-0">than last week</p>
+                                                    </div>
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title bg-warning-subtle rounded fs-3">
+                                                        <i class="bx bx-user-circle text-warning"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-warning opacity-25 fs-18">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-warning opacity-25 fs-18">
+                                            <i class="bi bi-person-fill"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-warning opacity-25 fs-18">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div><!-- end card -->
+                                </div><!-- end col -->
+
+                            </div> <!-- end row-->
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12">
+                                    <!-- card -->
+                                    <a href="{%url 'customers'%}">
+                                        <div class="card card-animate" style="background:#FE9F42;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                        
+                                                    <div class="flex-grow-1">
+                                                        <h3 class=" fw-semibold mt-2" style="color: white;">Add Customers
+                                                        </h3>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-light-subtle rounded fs-3">
+                                                            <i class="bx bx-user-circle text-warning"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-12 col-md-12">
+                                    <!-- card -->
+                                    <a href="{%url 'mapcoupons'%}">
+                                        <div class="card card-animate" style="background:#01CFE9;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                        
+                                                    <div class="flex-grow-1">
+                                                        <h3 class=" fw-semibold mt-2" style="color: white;">Map Coupons</h3>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-light-subtle rounded fs-3">
+                                                            <i class='bx bxs-coupon text-info'></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-12 col-md-12">
+                                    <!-- card -->
+                                    <a href="{%url 'validate-coupons'%}">
+                                        <div class="card card-animate" style="background:#1B2951;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                        
+                                                    <div class="flex-grow-1">
+                                                        <h3 class=" fw-semibold mt-2" style="color: white;">Validate Coupons</h3>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-light-subtle rounded fs-3">
+                                                            <i class='bx bx-badge-check text-dark'></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <!-- card -->
+                            <div class="card bg-info-subtle text-info border-0">
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-sm">
+                                            <h5 class="card-title fs-17">Generate Monthly Report</h5>
+                                            <p class="mb-0">Download the monthly reports for availed coupons</p>
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <button type="button" class="btn btn-info btn-label rounded-pill"><i
+                                                    class="ri-markup-line label-icon align-middle rounded-pill fs-16 me-2"></i>
+                                                Download</button>
+                                        </div>
+                                    </div>
+                                    <div class="position-absolute top-0 start-50 mt-2 opacity-25">
+                                        <i class="bi bi-shop display-4"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">Recent Orders</h4>
+                                    <div class="flex-shrink-0">
+                                        
+                                    </div>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <div class="table-responsive table-card">
+                                        <table class="table table-centered align-middle table-nowrap mb-0">
+                                            <thead class="text-muted table-light">
+                                                <tr>
+                                                    <th scope="col">Purchase ID</th>
+                                                    <th scope="col">Purchase Date</th>
+                                                    <th scope="col">Customer Name</th>
+                                                    <th scope="col">Total Coupons</th>
+                                                    <th scope="col">Milk Coupons</th>
+                                                    <th scope="col">Curd Coupons</th>
+                                                    <th scope="col">Toned Milk</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {%for purchase in purchases%}
+                                                <tr>
+                                                    <td>
+                                                        <a href="#!" class="fw-medium link-primary">{{purchase.purchase_id}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{purchase.dop}}
+                                                       
+                                                    </td>
+                                                    <td>      
+                                                    {{purchase.purchase_customer.get_full_name}}
+                                                       
+                                                    </td>
+                                                    <td>
+                                                        {{purchase.total_purchase}}
+                                                    </td>
+                                                    <td>{{purchase.get_milk_total}}</td>
+                                                    <td>{{purchase.get_curd_total}}</td>
+                                                    <td>
+                                                        {{purchase.get_ton_total}}
+                                                    </td>
+                                                </tr><!-- end tr -->
+                                                {%endfor%}
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="card card-height-100">
+                                <div class="card-header align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">Sales by Category</h4>
+                                    
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+                                    <div id="multiple_radialbar"
+                                        data-colors='["--tb-primary", "--tb-info", "--tb-success", "--tb-secondary"]'
+                                        class="apex-charts" dir="ltr"></div>
+                                </div>
+                            </div> <!-- .card-->
+                        </div> <!-- .col-->
+                        <div class="col-xl-8">
+                            <div class="card card-height-100">
+                                <div class="card-header align-items-center d-flex">
+                                    <h4 class="card-title mb-0 flex-grow-1">Weekly Sales</h4>
+                                    
+                                </div><!-- end card header -->
+                        
+                                
+                        
+                                <div class="card-body p-0 pb-2">
+                                    <div class="w-100">
+                                        <div id="customer_impression_charts" data-colors='["--tb-dark", "--tb-secondary","--tb-warning","--tb-primary"]'
+                                            class="apex-charts" dir="ltr"></div>
+                                    </div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div><!-- end col -->
+
+                    </div> <!-- end row-->
+
+
+
+                </div> <!-- end .h-100-->
+
+            </div> <!-- end col -->
+
+            <!-- end col -->
+        </div>
+
+    </div>
+    <!-- container-fluid -->
+</div>
+{%endblock%}
+{%block script%}
+<script>
+    var data = '{{total_data}}'
+    var total_data = JSON.parse(data.replace(/&quot;/g, '"'))
+    var week_d='{{chart_weekly}}'
+    var weekly_data= JSON.parse(week_d.replace(/&quot;/g, '"'))
+    console.log(weekly_data);
+</script>
+
+<!-- Dashboard init -->
+<script src="{%static 'assets/js/pages/dashboard-ecommerce.init.js'%}"></script>
+{%endblock%}

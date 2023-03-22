@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .y-box{
+            background-color: #438EFF;
+            height: 50vh;
+            width: 100%;
+            position: relative;
+        }
+        .logo{
+            position: relative;
+            width: 50%;
+            margin: -7.5em auto;
+            display: flex;
+            justify-content: center;
+        }
+        .logo img{
+            height: 300px;
+
+        }
+        .milk{
+            position: absolute;
+            margin: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 4.5%;
+            bottom: 0;
+        }
+        
+        @media only screen and (max-width: 600px) {
+  .logo img{
+            height: 200px;
+
+        }
+        .milk img{
+            width: 90%;
+        }
+        .milk{
+            
+           
+        }
+        .y-box{
+            height: 40vh;
+        }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="y-box">
+        <div class="milk">
+            <img src="{% static 'assets/images/milkSplash.svg' %}" alt="" srcset="">
+        </div>
+        </div>
+        <div class="logo">
+            <img src="{% static 'assets/images/homePage-Logo.svg' %}" alt="" srcset="">
+        </div>
+    </div>
+    
+    
+</body>
+</html>

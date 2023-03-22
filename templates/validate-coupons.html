@@ -1,0 +1,100 @@
+{%extends 'theme.html' %}
+
+{%load static%}
+
+{%block title%}Scan coupons{%endblock%}
+
+{%block css%}
+<link href="{% static 'assets/libs/sweetalert2/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
+{%endblock%}
+
+{%block content%}
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mt-n4 mx-n4 border-0 rounded-0 bg-primary-subtle">
+                    <div class="card-body pb-0 px-4">
+                        <div class="row justify-content-between align-items-center g-3 mb-5 pb-1 pt-3">
+                            <div class="col-lg-4">
+                                <h4 class="mb-0">Validate Coupons</h4>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end card body -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end col -->
+        </div>
+
+        <div class="row mt-n5">
+            <div class="col-lg-12">
+                <div class="card" style="min-height: calc(100vh - 70px - 60px - 142px);">
+                    <div class="card-body">
+                        <div class="row">
+                            
+                            <div class="col-12 col-lg-12">
+                                <form action="{{customer.get_map_url}}" method="post" class="p-2" name="couponForm">
+                                    {% csrf_token %}
+                                    <div class="d-flex flex-column gap-3 ">
+                                        <div>
+                                            <label for="coupon_id">Coupon Code</label>
+                                            <input type="text" class="form-control" name="coupon_id" id="coupon_id">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4"><div id="reader" width="300px"></div></div>
+                                        </div>
+                                        
+                                        <div>
+                                            <input type="file" class="form-control" id="qr-input-file" accept="image/*"
+                                                capture>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6">
+                                                <select name="camera" id="camera" class="form-control">
+                                                    <option value="">Switch Camera</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <button id="SwitchScan" type="button" class="btn btn-secondary">Start
+                                                    Scanning</button>
+                                                <button type="submit" class="btn btn-secondary">Add Coupon</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{%block script%}
+<!-- QR code js -->
+<script src="{%static 'assets/js/html5-qrcode.min.js'%}"></script>
+<!-- QR code init js -->
+<script src="{%static 'assets/js/pages/qrcode.init.js'%}"></script>
+
+<!-- Sweet Alerts js -->
+<script src="{% static 'assets/libs/sweetalert2/sweetalert2.min.js' %}"></script>
+
+<!-- Sweet alert init js-->
+<script src="{% static 'assets/js/sweetalert.init.js'%}"></script>
+{%if messages%}
+{%for message in messages%}
+<script>showToast('{{message.tags}}', '{{message}}')</script>
+
+{%endfor%}
+{%endif%}
+{%endblock%}

@@ -1,0 +1,370 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>{%block title%}{%endblock%}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Minimal Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    {%block css%}{%endblock%}
+    <style>
+        @media only screen and (max-width: 900px){
+            table.gridjs-table{
+            width: auto;
+        }
+        }
+        
+    </style>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{%static 'assets/images/favicon.ico' %}">
+
+    
+
+    <!--Swiper slider css-->
+    <link href="{%static 'assets/libs/swiper/swiper-bundle.min.css'%}" rel="stylesheet" type="text/css" />
+
+    <!-- Layout config Js -->
+    <script src="{%static 'assets/js/layout.js'%}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{%static 'assets/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{%static 'assets/css/icons.min.css'%}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{%static 'assets/css/app.min.css'%}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{%static 'assets/css/custom.min.css'%}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <div class="top-tagbar">
+            <div class="w-100">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-auto col-9">
+                        <div class="text-white-50 fs-13">
+                            <i class="bi bi-clock align-middle me-2"></i> <span id="current-time"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-auto col-6 d-none d-lg-block">
+                        <div class="d-flex align-items-center justify-content-center gap-3 fs-13 text-white-50">
+                            
+                            <div>
+                                <i class="bi bi-globe align-middle me-2"></i> MilkBrand
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <header id="page-topbar">
+            <div class="layout-width">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box horizontal-logo">
+                            <a href="{%url 'dashboard' %}" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="{%static 'assets/images/logo-sm.png' %}" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{%static 'assets/images/logo-dark.png' %}" alt="" height="25">
+                                </span>
+                            </a>
+
+                            <a href="{%url 'dashboard' %}" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="{%static 'assets/images/logo-sm.png' %}" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{%static 'assets/images/logo-light.png'%}" alt="" height="25">
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button"
+                            class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
+                            id="topnav-hamburger-icon">
+                            <span class="hamburger-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </button>
+
+                        
+                    </div>
+
+                    <div class="d-flex align-items-center">
+
+                       
+                        
+
+                        
+
+                        <div class="ms-1 header-item d-none d-sm-flex">
+                            <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle"
+                                data-toggle="fullscreen">
+                                <i class='bi bi-arrows-fullscreen fs-16'></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                            <button type="button"
+                                class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle mode-layout"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-sun align-middle fs-20"></i>
+                            </button>
+                            <div class="dropdown-menu p-2 dropdown-menu-end" id="light-dark-mode">
+                                <a href="#!" class="dropdown-item" data-mode="light"><i
+                                        class="bi bi-sun align-middle me-2"></i> Defualt (light mode)</a>
+                                <a href="#!" class="dropdown-item" data-mode="dark"><i
+                                        class="bi bi-moon align-middle me-2"></i> Dark</a>
+                                <a href="#!" class="dropdown-item" data-mode="auto"><i
+                                        class="bi bi-moon-stars align-middle me-2"></i> Auto (system defualt)</a>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="dropdown ms-sm-3 header-item topbar-user">
+                            <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span class="d-flex align-items-center">
+                                    <img class="rounded-circle header-profile-user"
+                                        src="{%static 'assets/images/users/my-image.jpg'%}" alt="Header Avatar">
+                                    <span class="text-start ms-xl-2">
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anand Ajith</span>
+                                        <span
+                                            class="d-none d-xl-block ms-1 fs-13 text-muted user-name-sub-text">Office staff</span>
+                                    </span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                               
+                                
+                                <a class="dropdown-item" href="{%url 'logout' %}"><i
+                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle" data-key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Modal -->
+        
+        
+        <!-- ========== App Menu ========== -->
+        <div class="app-menu navbar-menu">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="{%url 'dashboard' %}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{%static 'assets/images/MilkBrandFull-dark-sm.png' %}" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{%static 'assets/images/MilkBrandFull-dark-sm.png' %}" alt="" height="26">
+                    </span>
+                </a>
+                <a href="{%url 'dashboard' %}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{%static 'assets/images/MilkBrandFull-dark-sm.png' %}" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{%static 'assets/images/MilkBrandFull-dark-sm.png' %}" alt="" height="26">
+                    </span>
+                </a>
+                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                    id="vertical-hover">
+                    <i class="ri-record-circle-line"></i>
+                </button>
+            </div>
+
+            <div id="scrollbar">
+                <div class="container-fluid">
+
+                    <div id="two-column-menu">
+                    </div>
+                    <ul class="navbar-nav" id="navbar-nav">
+
+                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <li class="nav-item">
+                            <a href="{%url 'dashboard'%}" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span
+                                    data-key="t-dashboard">Dashboard</span> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarPages1" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                                aria-controls="sidebarPages1">
+                                <i class="bi bi-ticket-perforated"></i> <span data-key="t-pages">Key features</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarPages1">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{%url 'add-customers' %}" class="nav-link" data-key="t-starter">Add Customer</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a href="{%url 'mapcoupons' %}" class="nav-link" data-key="t-starter">Map Coupons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{%url 'validate-coupons'%}" class="nav-link" role="button" aria-expanded="false"
+                                            aria-controls="sidebarProfile" data-key="t-profile"> Validate coupons
+                                        </a>
+                        
+                                    </li>
+                        
+                                </ul>
+                            </div>
+                        </li>
+
+                        
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{%url 'customers'%}"  role="button"
+                                aria-expanded="false" aria-controls="sidebarAuth">
+                                <i class="bi bi-person-circle"></i> <span
+                                    data-key="t-authentication">Customers</span>
+                            </a>
+                            
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarPages">
+                                <i class="bi bi-ticket-perforated"></i> <span data-key="t-pages">Coupons</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarPages">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{%url 'mapcoupons' %}" class="nav-link" data-key="t-starter">Map Coupons </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{%url 'validate-coupons'%}" class="nav-link" 
+                                            role="button" aria-expanded="false" aria-controls="sidebarProfile"
+                                            data-key="t-profile"> Validate coupons
+                                        </a>
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#">
+                                <i class="bi bi-shop"></i> <span data-key="t-widgets">Sales</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#" target="_blank">
+                                <i class="bi bi-clock-history"></i> <span data-key="t-components">History</span>
+                            </a>
+                        </li>
+                       
+
+                         
+
+                       
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+
+            <div class="sidebar-background"></div>
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        <div class="vertical-overlay"></div>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            {%block content%}
+
+            {%endblock%}
+            
+            <!-- End Page-content -->
+
+            
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © MilkBrand.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Bangalore
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+
+
+    <!--start back-to-top-->
+    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!--end back-to-top-->
+
+    <!--preloader-->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Theme Settings -->
+
+    <!-- JAVASCRIPT -->
+    <script src="{%static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{%static 'assets/libs/simplebar/simplebar.min.js'%}"></script>
+   
+
+    <!-- apexcharts -->
+    <script src="{%static 'assets/libs/apexcharts/apexcharts.min.js'%}"></script>
+
+
+
+    <!--Swiper slider js-->
+    <script src="{%static 'assets/libs/swiper/swiper-bundle.min.js'%}"></script>
+
+    
+
+    <!-- App js -->
+    <script src="{%static 'assets/js/app.js'%}"></script>
+
+   
+
+    {%block script%}
+    {%endblock%}
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MilkBrand | Home</title>
+    <style>
+        .box{
+            display: block; 
+            position: relative; 
+            width: 100%;
+
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello Milk World</h1>
+    <div class="box">
+        <form action="{%url 'CreateCustomer'%}" method="post">
+            {% csrf_token %}
+            {{CustomerForm.as_p}}
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+    <div class="box">
+        <h2>Map Coupons</h2>
+        <form action="{%url 'map-coupons'%}" method="post">
+            {% csrf_token %}
+            <input type="text" name="coupon_id">
+            <input type="submit" value="SUBMIT">
+        </form>
+        
+    </div>
+    <div class="box">
+        <input type="search" name="search_name" id="search_name">
+        {%block content%}
+        <table id="search_box">
+            <thead>
+                <th>Customer ID</th>
+                <th>Name</th>
+            </thead>
+    
+                {%for customer in customers%}
+                <tr>
+                    <td>{{customer.customer_id}}</td>
+                    <td>{{customer.get_full_name}}</td>
+                </tr>
+                {%endfor%}
+       
+            
+        </table>
+        {%endblock%}
+        <h2>Validate Coupons</h2>
+        <form action="{%url 'validate-coupons'%}" method="post">
+            {% csrf_token %}
+            <input type="text" name="coupon_id">
+            <input type="submit" value="SUBMIT">
+        </form>
+        
+    </div>
+    {%if messages%}
+    {%for message in messages%}
+    {{message}}
+    {%endfor%}
+    {%endif%}
+
+    <script>
+         
+
+            const data = '{{c_json}}'
+            const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+            console.log(rdata)
+            
+            const input=document.getElementById('search_name')
+            const search_box=document.getElementById('search_box')
+            let filteredArr=[]
+            input.addEventListener('keyup',(e)=>{
+                search_box.innerHTML=`<thead><th>Customer ID</th><th>Name</th></thead> `
+                filteredArr=rdata.filter(info=>info['c_name'].toLocaleLowerCase().includes(e.target.value))
+                console.log(filteredArr)
+                if(filteredArr.length>0)
+                filteredArr.map(info=>{
+                    search_box.innerHTML+=`<tr>
+                    <td>${info['customer_id']}</td>
+                    <td>${info['c_name']}</td>
+                </tr>`
+                })
+            })
+             search_box.innerHTML+="</table>"
+        
+    </script>
+</body>
+</html>
